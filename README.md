@@ -12,27 +12,28 @@ Triviz is an experimental trivia quiz web application built with Spring Boot and
 
 # Technologies
 
-* Requires installation
-  * [Docker](https://www.docker.com/)
-  * [Java 21](https://openjdk.org/projects/jdk/21/)
-  * [Maven](https://maven.apache.org/download.cgi)
-  * [Postgres >= 14](https://www.postgresql.org/)
-  * [Node 21.6](https://nodejs.org/en/) ([Node Version Manager](https://github.com/nvm-sh/nvm) recommended)
-  * [Angular CLI](https://angular.dev/tools/cli)
-* Included
-  * [Spring-boot](https://spring.io/)
+* [Docker](https://www.docker.com/)
+* [Java 21](https://openjdk.org/projects/jdk/21/)
+* [Maven](https://maven.apache.org/download.cgi)
+* [Postgres 16](https://www.postgresql.org/)
+* [Node 21.6](https://nodejs.org/en/) ([Node Version Manager](https://github.com/nvm-sh/nvm) recommended)
+* [Angular CLI](https://angular.dev/tools/cli)
+* [Spring-boot](https://spring.io/)
 
 # Getting Started
 
-* Build Triviz in root project directory, where docker-compose.yml is
-```
+* **Build all services**
+```bash
 docker compose build
 ```
-* Run Triviz backend
-```
+* **Start backend and database containers**
+```bash
 docker compose up -d backend
 ```
-* Run Triviz frontend
-```
+* **Run the frontend Angular development server**
+```bash
 ng serve
 ```
+* Access the application:
+  * Backend: `http://localhost:8080`
+  * Frontend: `http://localhost:4200`
