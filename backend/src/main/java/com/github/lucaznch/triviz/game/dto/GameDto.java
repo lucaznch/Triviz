@@ -1,32 +1,23 @@
-package com.github.lucaznch.triviz.game.domain;
+package com.github.lucaznch.triviz.game.dto;
 
-import com.github.lucaznch.triviz.game.dto.GameDto;
+import com.github.lucaznch.triviz.game.domain.Game;
 
-import jakarta.persistence.*;
+public class GameDto {
 
-@Entity
-@Table(name = "game")
-public class Game {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     private String name;
     private String category;
     private String level;
 
 
-    public Game() {
-        // default constructor for JPA
+    public GameDto() {
     }
-
-    public Game(GameDto gameDto) {
-        setName(gameDto.getName());
-        setCategory(gameDto.getCategory());
-        setLevel(gameDto.getLevel());
-
-        // TODO: verify invariants
+    
+    public GameDto(Game game) {
+        setId(game.getId());
+        setName(game.getName());
+        setCategory(game.getCategory());
+        setLevel(game.getLevel());
     }
 
     public Integer getId() {
@@ -43,6 +34,10 @@ public class Game {
 
     public String getLevel() {
         return level;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public void setName(String name) {
