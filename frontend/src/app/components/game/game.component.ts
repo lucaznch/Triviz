@@ -10,15 +10,15 @@ import { Game } from '../../models/game';
   styleUrl: './game.component.css'
 })
 export class GameComponent implements OnInit {
-  game?: Game;
+  games: Game[] = [];
 
   constructor(private gameService: GameService) {}
 
   ngOnInit() {
-    this.gameService.getRandomGame().subscribe({
-      next: data =>  this.game = data,
-      error: err => console.error('Error fetching game:', err),
-    });
+    this.gameService.getGames().subscribe(
+      (data: Game[]) => this.games = data,
+      (error: any) => console.error('Error fetching games:', error)
+    );
   }
   
 }

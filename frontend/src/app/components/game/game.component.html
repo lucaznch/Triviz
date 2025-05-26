@@ -1,9 +1,1 @@
-<div *ngIf="game as g">
-  <p><strong>ID:</strong> {{ g.id }}</p>
-  <p><strong>Name:</strong> {{ g.name }}</p>
-  <p><strong>Category:</strong> {{ g.category }}</p>
-  <p><strong>Level:</strong> {{ g.level }}</p>
-</div>
-<div *ngIf="!game">
-  <p>Game not found.</p>
-</div>
+<pre>{{ games | json }}</pre>

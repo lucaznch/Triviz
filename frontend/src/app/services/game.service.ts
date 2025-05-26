@@ -8,12 +8,12 @@ import { Game } from '../models/game';
     providedIn: 'root'
 })
 export class GameService {
-    private baseUrl = 'http://localhost:8080/games';
+    private baseUrl = 'http://localhost:8080/game';
 
     constructor(private http: HttpClient) { }
 
-    getRandomGame(): Observable<Game> {
-        return this.http.get<Game>(this.baseUrl);
+    getGames(): Observable<Game[]> {
+        return this.http.get<Game[]>(this.baseUrl + '/all');
     }
 
 }
