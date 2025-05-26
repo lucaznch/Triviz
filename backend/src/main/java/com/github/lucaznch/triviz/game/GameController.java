@@ -16,7 +16,7 @@ public class GameController {
 
 
     @GetMapping("/all")
-    public List<GameDto> getGames(@PathVariable int gameId) {
+    public List<GameDto> getGames() {
         return gameService.getGames();
     }
 }
