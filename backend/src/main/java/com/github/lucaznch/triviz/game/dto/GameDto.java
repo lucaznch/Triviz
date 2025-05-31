@@ -1,6 +1,9 @@
 package com.github.lucaznch.triviz.game.dto;
 
 import com.github.lucaznch.triviz.game.domain.Game;
+import com.github.lucaznch.triviz.question.dto.QuestionDto;
+
+import java.util.List;
 
 public class GameDto {
 
@@ -8,7 +11,7 @@ public class GameDto {
     private String name;
     private String category;
     private String level;
-
+    private List<QuestionDto> questions;
 
     public GameDto() {
     }
@@ -18,6 +21,9 @@ public class GameDto {
         setName(game.getName());
         setCategory(game.getCategory());
         setLevel(game.getLevel());
+        setQuestions(game.getQuestions().stream()
+                    .map(question -> new QuestionDto(question))
+                    .toList());
     }
 
     public Integer getId() {
@@ -36,6 +42,10 @@ public class GameDto {
         return level;
     }
 
+    public List<QuestionDto> getQuestions() {
+        return questions;
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -50,6 +60,10 @@ public class GameDto {
 
     public void setLevel(String level) {
         this.level = level;
+    }
+
+    public void setQuestions(List<QuestionDto> questions) {
+        this.questions = questions;
     }
 }
 

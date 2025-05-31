@@ -1,8 +1,12 @@
 package com.github.lucaznch.triviz.game.domain;
 
 import com.github.lucaznch.triviz.game.dto.GameDto;
+import com.github.lucaznch.triviz.question.domain.Question;
 
 import jakarta.persistence.*;
+
+import java.util.List;
+import java.util.ArrayList;
 
 @Entity
 @Table(name = "game")
@@ -16,6 +20,9 @@ public class Game {
     private String category;
     private String level;
 
+    @ManyToMany
+    @JoinTable(name = "game_questions")
+    private List<Question> questions = new ArrayList<>();
 
     public Game() {
         // default constructor for JPA
@@ -45,6 +52,10 @@ public class Game {
         return level;
     }
 
+    public List<Question> getQuestions() {
+        return questions;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -56,5 +67,11 @@ public class Game {
     public void setLevel(String level) {
         this.level = level;
     }
-}
 
+    public void addQuestion(Question question) {
+        if (question != null && !questions.contains(question)) {
+            questions.add(question);
+            question.addGame(this);
+        }
+    }
+}
