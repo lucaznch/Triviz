@@ -34,6 +34,7 @@ docker compose up -d backend
 ```bash
 ng serve
 ```
-* Access the application:
+* **Access the application**:
+  * Database: `psql -h 127.0.0.1 -p 5432 -U engineer -d triviz`
   * Backend: `http://localhost:8080`
   * Frontend: `http://localhost:4200`
