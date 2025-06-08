@@ -18,6 +18,14 @@ public class QuestionService {
     private QuestionRepository questionRepository;
 
     @Transactional(isolation = Isolation.READ_COMMITTED)
+    public List<QuestionDto> getQuestions() {
+        return questionRepository.findAll()
+                                   .stream()
+                                   .map(question -> new QuestionDto(question))
+                                   .toList();
+    }
+
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     public List<QuestionDto> getQuestionsByLevel(String level) {
         return questionRepository.getQuestionsByLevel(level)
                                    .stream()

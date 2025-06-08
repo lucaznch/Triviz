@@ -8,11 +8,16 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/question")
+@RequestMapping("/questions")
 public class QuestionController {
 
     @Autowired
     private QuestionService questionService;
+
+    @GetMapping("/all")
+    public List<QuestionDto> getQuestions() {
+        return questionService.getQuestions();
+    }
 
     @GetMapping("/level/{level}")
     public List<QuestionDto> getQuestionsByLevel(@PathVariable String level) {
