@@ -21,7 +21,9 @@ public class Game {
     private String level;
 
     @ManyToMany
-    @JoinTable(name = "game_questions")
+    @JoinTable(name = "game_questions",
+               joinColumns = @JoinColumn(name = "game_id"),
+               inverseJoinColumns = @JoinColumn(name = "question_id"))
     private List<Question> questions = new ArrayList<>();
 
     public Game() {

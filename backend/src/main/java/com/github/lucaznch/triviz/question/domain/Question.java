@@ -27,7 +27,12 @@ public class Question {
     public Question() {
     }
 
-    public Question(QuestionDto questionDto) {}
+    public Question(QuestionDto questionDto) {
+        setQuestion(questionDto.getQuestion());
+        setAnswer(questionDto.getAnswer());
+        setCategory(questionDto.getCategory());
+        setLevel(questionDto.getLevel());
+    }
 
     public Integer getId() {
         return id;
