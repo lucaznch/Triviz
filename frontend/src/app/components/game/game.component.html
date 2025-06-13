@@ -1,1 +1,17 @@
-<pre>{{ games | json }}</pre>
+<div *ngIf="showStart">
+  <button (click)="startGame()">Start</button>
+</div>
+
+<div *ngIf="!showStart && game">
+  <h2>Game: {{ game.name }}</h2>
+  <p>Category: {{ game.category }} | Level: {{ game.level }}</p>
+
+  <div *ngIf="currentQuestion() as question">
+    <p><strong>Question {{ currentQuestionIndex + 1 }}:</strong> {{ question.question }}</p>
+
+    <label for="answer">Your Answer:</label>
+    <input id="answer" [(ngModel)]="userAnswers[currentQuestionIndex]" />
+
+    <button (click)="nextQuestion()">Next Question</button>
+  </div>
+</div>
