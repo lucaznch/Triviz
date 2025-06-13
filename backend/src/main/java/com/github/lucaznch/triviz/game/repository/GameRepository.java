@@ -11,14 +11,8 @@ import java.util.List;
 
 @Repository
 @Transactional
-public interface GameRepository extends JpaRepository<Game, String> {
-    @Query("SELECT g FROM Game g WHERE g.level = 'Easy'")
-    List<Game> findEasyGames();
-
-    @Query("SELECT g FROM Game g WHERE g.level = 'Medium'")
-    List<Game> findMediumGames();
-
-    @Query("SELECT g FROM Game g WHERE g.level = 'Hard'")
-    List<Game> findHardGames();
+public interface GameRepository extends JpaRepository<Game, Integer> {
+    @Query("SELECT g FROM Game g WHERE g.level = ?1")
+    List<Game> getGamesByLevel(String level);
 }
 
