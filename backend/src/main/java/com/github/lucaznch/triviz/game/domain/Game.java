@@ -34,6 +34,7 @@ public class Game {
         setName(gameDto.getName());
         setCategory(gameDto.getCategory());
         setLevel(gameDto.getLevel());
+        //setQuestions(gameDto.getQuestions().stream().map(questionDto -> new Question(questionDto)).toList());
 
         // TODO: verify invariants
     }
@@ -68,6 +69,13 @@ public class Game {
 
     public void setLevel(String level) {
         this.level = level;
+    }
+
+    public void setQuestions(List<Question> gameQuestions) {
+        this.questions = gameQuestions;
+        for (Question question : gameQuestions) {
+            question.addGame(this);
+        }
     }
 
     public void addQuestion(Question question) {
