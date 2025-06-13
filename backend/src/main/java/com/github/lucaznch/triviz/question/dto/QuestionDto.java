@@ -12,7 +12,7 @@ public class QuestionDto {
     private String answer;
     private String category;
     private String level;
-    private List<GameDto> games;
+    private List<Integer> games;
 
     public QuestionDto() {
     }
@@ -23,6 +23,9 @@ public class QuestionDto {
         setAnswer(question.getAnswer());
         setCategory(question.getCategory());
         setLevel(question.getLevel());
+        setGames(question.getGames().stream()
+                .map(game -> game.getId())
+                .toList());
     }
 
     public Integer getId() {
@@ -45,7 +48,7 @@ public class QuestionDto {
         return level;
     }
 
-    public List<GameDto> getGames() {
+    public List<Integer> getGames() {
         return games;
     }
 
@@ -69,7 +72,7 @@ public class QuestionDto {
         this.level = level;
     }
 
-    public void setGames(List<GameDto> games) {
+    public void setGames(List<Integer> games) {
         this.games = games;
     }
 }
